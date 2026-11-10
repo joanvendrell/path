@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Path</title>
+<meta name="description" content="Path: an educational consultancy that maps degrees, fellowships, internships, advisors and positions into a personalised graph of routes to your goal, with a success probability for each route.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234b4fd1'/%3E%3Cpath d='M7 23 C13 23 12 9 18 9 S22 16 25 16' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='7' cy='23' r='3' fill='white'/%3E%3Ccircle cx='25' cy='16' r='3' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M7 23 C13 23 12 9 18 9 S22 16 25 16" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="7" cy="23" r="3" fill="#fff"/><circle cx="25" cy="16" r="3" fill="#fff"/></svg>
+      Path
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#profile">Profile</a>
+      <a href="#similar">Similar profiles</a>
+      <a href="#path">Your path</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#mentors">Mentors</a>
+    </div>
+    <button class="theme-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <span class="tag"><span class="dot"></span> Prototype · synthetic data</span>
+    <h1>Find your <em>Path</em>.</h1>
+    <p class="sub">Tell us where you are. We'll show you the degrees, fellowships, internships, advisors and positions that people like you took to get where you want to be, and how likely each route is to work for you.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="#profile">Build my profile ↓</a>
+      <a class="btn" href="#path">See a sample path</a>
+    </div>
+    <div class="hero-stats">
+      <div><b id="hs-profiles">—</b>trajectories in the demo database</div>
+      <div><b id="hs-opps">—</b>opportunities tracked</div>
+      <div><b id="hs-goals">—</b>end goals to explore</div>
+    </div>
+    <p class="hint">↳ move your cursor over the background: each point is a step, each line a route someone took</p>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOW ================= -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">00</span> How Path works</div>
+    <h2>Your future, learned from the paths of others.</h2>
+    <p class="lede">Most career advice is generic. Path compares your profile with thousands of real trajectories of people who started from a similar place: same field, similar resources, similar strengths. It then shows you which sequence of opportunities actually led them to the goal you want.</p>
+    <div class="grid5" style="margin-top:26px">
+      <div class="pipe reveal"><span class="step">1</span><div class="ic" style="background:var(--accent-soft);color:var(--accent)">✎</div><h5>Profile</h5><p>Location, economic background, studies, experience and strengths, in a 3-minute form.</p></div>
+      <div class="pipe reveal"><span class="step">2</span><div class="ic" style="background:var(--amber-soft);color:var(--amber)">CV</div><h5>Generated CV</h5><p>We write a structured CV from your answers. You can edit it and reuse it in applications.</p></div>
+      <div class="pipe reveal"><span class="step">3</span><div class="ic" style="background:var(--violet-soft);color:var(--violet)">⟨v⟩</div><h5>Embedding</h5><p>The CV becomes a vector. Nearby vectors are people whose starting point resembled yours.</p></div>
+      <div class="pipe reveal"><span class="step">4</span><div class="ic" style="background:var(--teal-soft);color:var(--teal)">⇄</div><h5>Match + scrape</h5><p>We take the trajectories of your nearest profiles and join them with live data on deadlines, funding and eligibility.</p></div>
+      <div class="pipe reveal"><span class="step">5</span><div class="ic" style="background:var(--sky-soft);color:var(--sky)">◇</div><h5>Path graph</h5><p>Routes to your goal, each with a success probability. Change the goal or constraints and the graph re-plans.</p></div>
+    </div>
+    <div class="callout amber" style="margin-top:22px"><b>This is a draft.</b> Every person, organisation, program, deadline and number on this page is synthetic. The demo database has a few hundred fake profiles, generated in your browser so you can see how the matching and graph would behave.</div>
+  </div>
+</section>
+
+<!-- ================= PROFILE ================= -->
+<section class="sec" id="profile">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Your profile → your CV</div>
+    <h2>Start from where you actually are.</h2>
+    <p class="lede">Economic background and location matter: they decide which fellowships you qualify for and which routes are realistic. Edit anything below. The CV, the embedding and every section further down update live.</p>
+
+    <div class="widget reveal">
+      <div class="widget-head"><h4>Profile builder</h4><span class="badge">live</span></div>
+      <div class="widget-body">
+        <div class="presets"><span class="small muted">Load a sample student:</span><span id="presets"></span></div>
+        <div class="grid2">
+          <form class="form-grid" id="pf" autocomplete="off" onsubmit="return false">
+            <div class="field full"><label for="pf-name">Full name</label><input type="text" id="pf-name"></div>
+            <div class="field"><label for="pf-region">Region</label><select id="pf-region"></select></div>
+            <div class="field"><label for="pf-city">City</label><select id="pf-city"></select></div>
+            <div class="field full"><label for="pf-econ">Economic background <output id="pf-econ-o"></output></label><input type="range" id="pf-econ" min="1" max="5" step="1"></div>
+
+            <div class="form-sub">Studies &amp; experience</div>
+            <div class="field"><label for="pf-field">Field</label><select id="pf-field"></select></div>
+            <div class="field"><label for="pf-level">Current stage</label><select id="pf-level"></select></div>
+            <div class="field"><label for="pf-degree">Degree</label><input type="text" id="pf-degree"></div>
+            <div class="field"><label for="pf-school">Institution</label><input type="text" id="pf-school"></div>
+            <div class="field"><label for="pf-gpa">GPA (4.0 scale) <output id="pf-gpa-o"></output></label><input type="range" id="pf-gpa" min="2" max="4" step="0.05"></div>
+            <div class="field"><label for="pf-exp">Work experience <output id="pf-exp-o"></output></label><input type="range" id="pf-exp" min="0" max="8" step="1"></div>
+            <div class="field full"><label for="pf-languages">Languages spoken <output id="pf-languages-o"></output></label><input type="range" id="pf-languages" min="1" max="5" step="1"></div>
+
+            <div class="form-sub">Strengths (self-assessed, 0–10)</div>
+            <div id="pf-strengths" class="form-grid full" style="gap:6px 16px"></div>
+          </form>
+
+          <div>
+            <div class="cv" id="cv"></div>
+          </div>
+        </div>
+      </div>
+      <div class="widget-foot">In production the CV text would be embedded with a sentence-embedding model (~768 dimensions). This prototype uses a small transparent vector so you can see exactly what drives the similarity: the strip above has one cell per dimension.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIMILAR ================= -->
+<section class="sec" id="similar">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span> Profiles like you</div>
+    <h2>People who started where you are.</h2>
+    <p class="lede">Every dot is a past student, placed by their embedding and coloured by the goal they pursued. The ones linked to you are your nearest neighbours. Their trajectories, both the successes and the ones that stalled, drive your probabilities.</p>
+
+    <div class="widget reveal">
+      <div class="widget-head"><h4>Profile map</h4><span class="badge">embedding space · 2D projection</span></div>
+      <div class="widget-body">
+        <div class="controls" style="margin-top:0">
+          <div class="ctrl" style="max-width:340px"><label for="k">Neighbours used (k) <output id="k-o"></output></label><input type="range" id="k" min="5" max="80" value="30"></div>
+          <div class="stat-row" id="sim-stats" style="flex:2;margin:0"></div>
+        </div>
+        <div class="sim-grid">
+          <div>
+            <canvas id="map" height="430"></canvas>
+            <div class="legend" id="map-legend"></div>
+            <div class="hover-info" id="map-hover">Hover a dot to inspect a profile.</div>
+          </div>
+          <div class="nb-list" id="nb-list"></div>
+        </div>
+      </div>
+      <div class="widget-foot">Similarity is the cosine between centred embeddings, rescaled to 0–100%. A trajectory chip in <span class="chip teal">green</span> was completed; one <span class="chip coral">struck through</span> is where that person stopped.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PATH ================= -->
+<section class="sec" id="path">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span> Your path</div>
+    <h2>Pick a destination. Path re-plans the route.</h2>
+    <p class="lede">Each column is a stage of your next decade. Each node is a concrete opportunity, and edge thickness shows how many similar profiles took that step. Choose a goal, add constraints, or click a node to require or exclude it.</p>
+
+    <div class="widget reveal">
+      <div class="widget-head"><h4>Path graph</h4><span class="badge">interactive</span></div>
+      <div class="widget-body">
+        <div class="goal-row" id="goals"></div>
+        <div class="constraints">
+          <label class="toggle"><input type="checkbox" id="c-funded"> Only funded / paid steps</label>
+          <label class="toggle"><input type="checkbox" id="c-relocate" checked> Willing to move abroad</label>
+          <div class="ctrl" style="max-width:260px;min-width:200px"><label for="c-horizon">Time horizon <output id="c-horizon-o"></output></label><input type="range" id="c-horizon" min="2" max="12" value="10"></div>
+          <span id="c-chips" style="display:flex;flex-wrap:wrap;gap:6px"></span>
+        </div>
+        <div class="graph-wrap"><svg id="graph" role="img" aria-label="Graph of routes to the selected goal"></svg></div>
+        <div class="legend" id="graph-legend"></div>
+        <div class="path-cards" id="path-cards"></div>
+        <div class="detail-grid">
+          <div class="panel" id="plan-panel"></div>
+          <div class="panel" id="node-panel"></div>
+        </div>
+      </div>
+      <div class="widget-foot">How the probability is computed: a Bayesian blend of (a) the similarity-weighted outcomes of profiles who took exactly that route and (b) a prior from how well the route's requirements fit your profile. The bar shows an 80% interval, which is wider when few similar people took the route.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPPORTUNITIES ================= -->
+<section class="sec" id="opportunities">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span> Opportunities</div>
+    <h2>What to apply to next.</h2>
+    <p class="lede">The first steps of your best routes, sorted by deadline. Deadlines, funding and eligibility come from sources that are re-crawled continuously.</p>
+    <div class="widget reveal">
+      <div class="widget-head"><h4>Upcoming deadlines for <span id="opp-goal"></span></h4><span class="badge">scraped</span></div>
+      <div class="widget-body">
+        <div class="tbl-wrap"><table class="tbl" id="opp-table"></table></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card reveal">
+        <h3 style="margin-top:0">Data sources</h3>
+        <div id="sources"></div>
+      </div>
+      <div class="card reveal">
+        <h3 style="margin-top:0">Why your background is an input, not a filter</h3>
+        <p class="muted small">Economic level changes the graph in two ways. Need-based fellowships (like the <i>Bridge Scholars</i> node) appear only when you qualify, and "Only funded" removes routes with large tuition. The probabilities come from people with similar resources, so the advice is realistic rather than aspirational.</p>
+        <p class="muted small" style="margin:0">Try moving <b>Economic background</b> in your profile between <i>Low income</i> and <i>High income</i> and watch which routes appear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENTORS ================= -->
+<section class="sec" id="mentors">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span> Mentors &amp; advisors</div>
+    <h2>Talk to someone who has walked it.</h2>
+    <p class="lede">Path suggests mentors from similar profiles who reached your goal, and advisors who run the labs on your best route.</p>
+    <div class="people" id="people" style="margin-top:22px"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b style="font-family:var(--serif);font-weight:500;font-size:1.1rem;color:var(--ink)">Path</b> · educational consultancy prototype · 2026</p>
+    <p>All profiles, organisations, programs, people and statistics shown are synthetic and for demonstration only. Probabilities are illustrative, not predictions.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
